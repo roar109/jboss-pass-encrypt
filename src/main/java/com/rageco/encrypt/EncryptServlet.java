@@ -1,4 +1,4 @@
-package com.softtek.encrypt;
+package com.rageco.encrypt;
 
 import java.io.IOException;
 
