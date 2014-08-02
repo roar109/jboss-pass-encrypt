@@ -1,6 +1,8 @@
 package com.rageco.encrypt;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +39,6 @@ public class EncryptServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String password = request.getParameter("pass");
-		System.out.println("Post: "+password);
 		encrypt(password, response);
 	}
 	
@@ -49,12 +50,38 @@ public class EncryptServlet extends HttpServlet {
 	 * */
 	private void encrypt(String password, HttpServletResponse response){
 		try {
-			org.picketbox.datasource.security.SecureIdentityLoginModule.main(new String[]{password});
-			String buildResponse = "<h1>Check log for the encrypted password</h1><br>"+GO_BACK;
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		    PrintStream ps = new PrintStream(baos);
+		    // IMPORTANT: Save the old System.out!
+		    PrintStream old = System.out;
+		    // Tell Java to use your special stream
+		    System.setOut(ps);
+		    // Print some output: goes to your special stream
+		    org.picketbox.datasource.security.SecureIdentityLoginModule.main(new String[]{password});
+		    
+		    // Put things back
+		    System.out.flush();
+		    System.setOut(old);
+		    System.out.flush();
+			
+		    StringBuilder sb = new StringBuilder( "<h2>Pass: ");
+		    sb.append(password);
+		    sb.append("</h2><br><h3>Password: ");
+		    sb.append(baos.toString());
+		    sb.append("</h3><br>");
+		    sb.append(GO_BACK);
+		    
 			response.setContentType("text/html");
-			response.getOutputStream().write(buildResponse.getBytes());
+			response.getOutputStream().write(sb.toString().getBytes());;
 		} catch (Exception e) {
 			e.printStackTrace();
+			String buildResponse = e.getMessage();
+			response.setContentType("text/html");
+			try {
+				response.getOutputStream().write(buildResponse.getBytes());
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 }

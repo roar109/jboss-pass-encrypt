@@ -8,7 +8,7 @@
   	<servlet-name>EncryptServlet</servlet-name>
   	<display-name>EncryptServlet</display-name>
   	<description></description>
-  	<servlet-class>com.softtek.encrypt.EncryptServlet</servlet-class>
+  	<servlet-class>com.rageco.encrypt.EncryptServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>EncryptServlet</servlet-name>
