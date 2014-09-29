@@ -29,9 +29,7 @@ public class EncryptServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String password = request.getParameter("p");
-		System.out.println("Get: "+password);
-		encrypt(password, response);
+		response.getOutputStream().print("Not available");
 	}
 
 	/**
@@ -39,7 +37,11 @@ public class EncryptServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String password = request.getParameter("pass");
-		encrypt(password, response);
+		if("".equals(password) || password == null){
+			response.getOutputStream().print("Parameters not valid");
+		}else{
+			encrypt(password, response);
+		}
 	}
 	
 	/**
