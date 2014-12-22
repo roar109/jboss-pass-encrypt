@@ -4,7 +4,7 @@ package com.rageco.encrypt;
 /**
  * EncryptMain represents ...
  *
- * @author Hector Mednoza
+ * @author Hector Mendoza
  * @version $Id$
  * @since 22/12/2014
  *
@@ -19,10 +19,11 @@ public class EncryptMain
     * @since 22/12/2014
     *
     */
+   public static void main (final String... args)
    {
       try
       {
-         org.picketbox.datasource.security.SecureIdentityLoginModule.main (new String[] {"myPass"});
+         org.picketbox.datasource.security.SecureIdentityLoginModule.main (new String[] {"somePass"});
       }
       catch (final Exception e)
       {
