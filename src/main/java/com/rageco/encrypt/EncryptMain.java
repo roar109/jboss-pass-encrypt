@@ -1,17 +1,13 @@
-/*
- * Copyright © 2000 - 2008 24 Hour Fitness. All rights reserved.
- */
 package com.rageco.encrypt;
 
 
 /**
  * EncryptMain represents ...
  *
- * @author <a href="mailto:hector.mendoza@24hourfit.com">hector.mendoza</a>
+ * @author Hector Mednoza
  * @version $Id$
  * @since 22/12/2014
  *
- * @todo Complete description
  */
 public class EncryptMain
 {
