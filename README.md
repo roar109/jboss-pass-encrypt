@@ -1,3 +1,4 @@
+[![Build Status](https://drone.io/github.com/roar109/jboss-pass-encrypt/status.png)](https://drone.io/github.com/roar109/jboss-pass-encrypt/latest)
 jboss-pass-encrypt
 ==================
 
