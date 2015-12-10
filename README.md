@@ -2,6 +2,45 @@
 jboss-pass-encrypt
 ==================
 
-WAR to encrypt Jboss 7 passwords
+## Encrypt
 
-Deploy on jboss 7.1.1 and enter to localhost:8080/jboss-pass-encrypt enter the password and click encrypt, it will be display on the log of the jboss.
+
+	mvn exec:java -Dexec.mainClass="org.rage.jboss.utils.EncryptMain" -Dexec.args="arg0Pass"
+
+Output:
+
+	[INFO] ------------------------------------------------------------------------
+	[INFO] Building credentials-utils 1.0.0
+	[INFO] ------------------------------------------------------------------------
+	[INFO] 
+	[INFO] --- exec-maven-plugin:1.4.0:java (default-cli) @ credentials-utils ---
+	Encoded password: -307099e0bf23ba67207a6df87216de44
+
+Java
+
+	java -cp target/credentials-utils-1.0.0.jar org.rage.jboss.utils.EncryptMain arg0Pass
+	
+Output:
+
+	Encoded password: -307099e0bf23ba67207a6df87216de44
+
+## Decrypt
+
+	mvn exec:java -Dexec.mainClass="org.rage.jboss.utils.DecryptModule" -Dexec.args="-307099e0bf23ba67207a6df87216de44"
+
+Output:
+
+	[INFO] ------------------------------------------------------------------------
+	[INFO] Building credentials-utils 1.0.0
+	[INFO] ------------------------------------------------------------------------
+	[INFO] 
+	[INFO] --- exec-maven-plugin:1.4.0:java (default-cli) @ credentials-utils ---
+	arg0Pass
+	
+Java
+
+	java -cp target/credentials-utils-1.0.0.jar org.rage.jboss.utils.DecryptModule -307099e0bf23ba67207a6df87216de44
+	
+Output:
+
+	arg0Pass

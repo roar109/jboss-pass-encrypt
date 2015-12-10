@@ -1,4 +1,4 @@
-package com.rageco.encrypt;
+package org.rage.jboss.utils;
 
 
 /**

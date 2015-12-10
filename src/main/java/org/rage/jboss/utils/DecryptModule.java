@@ -1,4 +1,4 @@
-package com.rageco.encrypt;
+package org.rage.jboss.utils;
 
 
 import java.security.InvalidKeyException;
@@ -32,7 +32,7 @@ public class DecryptModule
       try
       {
          // put here your string
-         System.out.println (decode (args[0]));
+         System.out.println (decodeEncryptedPass (args[0]));
       }
       catch (final Exception e)
       {
@@ -47,7 +47,7 @@ public class DecryptModule
     * "https://source.jboss.org/browse/PicketBox/trunk/security-jboss-sx/jbosssx/src/main/java/org/picketbox/datasource/security/SecureIdentityLoginModule.java?r=276"
     * >Jboss api</a>
     * */
-   private static char[] decode (final String secret) throws NoSuchPaddingException, NoSuchAlgorithmException,
+   private static char[] decodeEncryptedPass (final String secret) throws NoSuchPaddingException, NoSuchAlgorithmException,
          InvalidKeyException, BadPaddingException, IllegalBlockSizeException
    {
       final byte[] kbytes = "jaas is the way".getBytes ();
